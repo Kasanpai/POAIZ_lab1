@@ -1,19 +1,26 @@
 ﻿// Laba_1.cpp 
-// part_2
+// part_3
 
 
 #include <iostream>
 
 int main()
 {
-	int min = 0, max = 100, m = 0;
-	int a[10] = { 0 };
+	int* a;
+	int n, z = 0;
+	printf("Input massive size: ");
+	scanf_s("%d", &n);
 
-	srand(time(NULL));
+	a = (int*)malloc(n * sizeof(int));
+	for (int i = 0; i < n; i++) {
+		printf("Input element num %d : ", i + 1);
+		scanf_s("%d", &z);
+		a[i] = z;
+	}
 
-	for (int i = 0; i < 10; i++) {
-		m = min + rand() % (max - min + 1);
-		a[i] = m;
+	printf("\n");
+
+	for (int i = 0; i < n; i++) {
 		printf("%d ", a[i]);
 	}
 
