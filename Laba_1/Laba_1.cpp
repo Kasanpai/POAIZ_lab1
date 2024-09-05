@@ -1,35 +1,21 @@
 ﻿// Laba_1.cpp 
-// part_1
+// part_2
 
 
 #include <iostream>
 
 int main()
 {
-	int min = INT_MAX, max = INT_MIN;
+	int min = 0, max = 100, m = 0;
 	int a[10] = { 0 };
 
+	srand(time(NULL));
+
 	for (int i = 0; i < 10; i++) {
-		a[i] = i;
+		m = min + rand() % (max - min + 1);
+		a[i] = m;
 		printf("%d ", a[i]);
 	}
-
-	for (int i = 0; i < 10; i++) {
-		if (a[i] < min) {
-			min = a[i]; 
-		};
-	}
-
-	for (int i = 0; i < 10; i++) {
-		if (a[i] < min) {
-			min = a[i]; 
-		};
-	}
-
-	printf("\n%d", max - min);
-	printf("\n%d", max);
-	printf("\n%d", min);
-
 
 	return 0;
 }
