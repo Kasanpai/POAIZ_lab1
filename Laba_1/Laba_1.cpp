@@ -1,56 +1,73 @@
 ﻿// Laba_1.cpp 
-// part_4
+// part_5
+
+
 
 #define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
-#include <malloc.h>
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_STUDENTS 100
+
+struct student {
+    char Name[50];
+    char Surname[50];
+    char Faculty[50];
+    int Age;
+};
+
+int main() {
+    struct student students[MAX_STUDENTS];
+    int num_students, i;
+    char search_name[50], search_surname[50];
+    int found = 0;
 
 
-int main()
-{
-    int* a; 
-    int i, j, n, m;
-    int sum=0 ;
- 
-    printf("Input row: ");
-    scanf("%d", &n);
-    printf("Input column: ");
-    scanf("%d", &m);
+    printf("Enter the number of students: ");
+    scanf("%d", &num_students);
 
-
-    a = (int*)malloc(n * m * sizeof(int));
-
-    for (i = 0; i < n; i++) 
-    {
-        for (j = 0; j < m; j++)
-        {
-            printf("a[%d][%d] = ", i, j);
-            scanf("%d", (a + i * m + j));
-        }
-    }
-   
-
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < m; j++)
-        {
-            sum = sum + *(a + i * m + j);
-        }
-        printf("Sum in the row num %d = %d\n", i+1, sum);
-        sum = 0;
+    printf("Enter information about the students:\n");
+    for (i = 0; i < num_students; i++) {
+        printf("Student %d:\n", i + 1);
+        printf("Name: ");
+        scanf("%s", students[i].Name);
+        printf("Surname: ");
+        scanf("%s", students[i].Surname);
+        printf("Faculty: ");
+        scanf("%s", students[i].Faculty);
+        printf("Age: ");
+        scanf("%d", &students[i].Age);
     }
 
+    printf("\nEnter the name and surname to search: ");
+    scanf("%s %s", search_name, search_surname);
 
-    for (i = 0; i < n; i++)
-    {
-        for (j = 0; j < m; j++)
-        {
-            printf("%4d ", *(a + i * m + j));
-
-            
+    for (i = 0; i < num_students; i++) {
+        if (strcmp(students[i].Name, search_name) == 0 && strcmp(students[i].Surname, search_surname) == 0) {
+            found = 1;
+            printf("\nInformation about the student:\n");
+            printf("Name: %s\n", students[i].Name);
+            printf("Surname: %s\n", students[i].Surname);
+            printf("Faculty: %s\n", students[i].Faculty);
+            printf("Age: %d\n", students[i].Age);
+            break;
         }
-        printf("\n");
     }
-        free(a);
-        getchar();
-	return 0;
+
+    if (!found) {
+        printf("\nStudent not found\n");
+    }
+
+    return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
