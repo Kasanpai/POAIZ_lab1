@@ -2,12 +2,10 @@
 // part_5
 
 
-
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
-
-#define MAX_STUDENTS 100
+#include <stdlib.h>
 
 struct student {
     char Name[50];
@@ -17,14 +15,20 @@ struct student {
 };
 
 int main() {
-    struct student students[MAX_STUDENTS];
+
+    struct student* students;
     int num_students, i;
     char search_name[50], search_surname[50];
     int found = 0;
 
-
     printf("Enter the number of students: ");
     scanf("%d", &num_students);
+
+    students = (struct student*)malloc(num_students * sizeof(struct student));
+    if (students == NULL) {
+        printf("Memory allocation failed\n");
+        return 1;
+    }
 
     printf("Enter information about the students:\n");
     for (i = 0; i < num_students; i++) {
@@ -58,15 +62,9 @@ int main() {
         printf("\nStudent not found\n");
     }
 
+    free(students);
     return 0;
 }
-
-
-
-
-
-
-
 
 
 
