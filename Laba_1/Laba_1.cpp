@@ -10,12 +10,13 @@
 struct student {
     char Name[50];
     char Surname[50];
-    char Faculty[50];
+    char Faculty[20];
     int Age;
 };
 
 int main() {
 
+    
     struct student* students;
     int num_students, i;
     char search_name[50], search_surname[50];
