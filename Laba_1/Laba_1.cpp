@@ -15,8 +15,8 @@ int main()
 	}
 
 	for (int i = 0; i < 10; i++) {
-		if (a[i] < min) {
-			min = a[i]; 
+		if (a[i] > max) {
+			max = a[i]; 
 		};
 	}
 
